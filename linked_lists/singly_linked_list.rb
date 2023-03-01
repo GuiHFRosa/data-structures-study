@@ -1,3 +1,4 @@
+# Node with data and next node
 class Node
   attr_accessor :data, :next
 
@@ -7,6 +8,7 @@ class Node
   end
 end
 
+# Singly Linked List Implementation
 class SinglyLinkedList
   attr_reader :head
 
@@ -14,7 +16,16 @@ class SinglyLinkedList
     @head = nil
   end
 
-  def push(new_node)
+  def add(new_node)
+    if @head.nil?
+      @head = new_node
+      return
+    end
+    new_node.next = @head
+    @head = new_node
+  end
+
+  def append(new_node)
     if @head.nil?
       @head = new_node
       return
@@ -38,7 +49,11 @@ singly_linked_list = SinglyLinkedList.new
 node1 = Node.new(5, nil)
 node2 = Node.new(10, nil)
 node3 = Node.new(15, nil)
-singly_linked_list.push(node1)
-singly_linked_list.push(node2)
-singly_linked_list.push(node3)
+node4 = Node.new(20, nil)
+node5 = Node.new(25, nil)
+singly_linked_list.append(node1)
+singly_linked_list.append(node2)
+singly_linked_list.append(node3)
+singly_linked_list.add(node4)
+singly_linked_list.add(node5)
 singly_linked_list.print
